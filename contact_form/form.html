@@ -1,0 +1,113 @@
+<?php
+    /**
+    * makes the form for presenting to the requirer
+    *
+    * @package block_contact_form
+    * @category block
+    *
+    */
+?>
+<form id="contact" name="contact_form" method="post" action="<?php echo $CFG->wwwroot;?>/blocks/contact_form/form.php">
+<input type="hidden" name="fromcourse" value="<?php echo $fromcourse;?>" />
+<input type="hidden" name="id" value="<?php echo $id;?>" />
+<table width="635" align="center" class="generaltable" border="0" cellpadding="5" cellspacing="0">
+    <tr> 
+<?php
+if(isguest() || !isset($USER) || !isset($USER->email) ) {
+?>
+        <td width="30%" valign="top" align="right">
+            <b><?php print_string('name', 'block_contact_form') ?>:</b>
+        </td>
+        <td width="70%" valign="top" align="left"> 
+            <input type="text" name="name" size="25" maxlength="200" <?php if(isset($name)){ echo 'value="'. $name .'"';}?> />
+        </td>
+<?php
+} 
+else {
+?>
+        <td width="30%" valign="top" align="right">
+            <b><?php print_string('name', 'block_contact_form') ?>:</b>
+        </td>
+        <td width="70%" valign="top" align="left"> 
+            <input type="hidden" name="name" value="<?php echo fullname($USER);?>" /> <?php echo fullname($USER); ?>
+        </td>
+<?php 
+} 
+?>
+    </tr>
+    <tr> 
+        <td width="30%" valign="top" align="right">
+            <b><?php print_string('email', 'block_contact_form') ?>:</b>
+        </td>
+        <td width="70%" valign="top" align="left"> 
+<?php
+if (isguest() || ($USER->maildisplay && empty($USER->email))){
+?>
+            <input type="text" name="email" size="25" maxlength="100" value="<?php echo $email; ?>"/>
+<?php
+} else {
+    if (!$USER->maildisplay){
+        $email = $USER->email;
+?>
+            <input type="hidden" name="email" size="25" maxlength="100" value="<?php echo $email; ?>"/> <?php echo $email; ?>
+<?php
+    } else {
+        $email = $USER->email;
+?>
+            <script type="text/javascript">
+            function validate(obj){
+                if (obj.checked == true){
+                    document.forms['contact_form'].elements['email'].style.color = "#000000";
+                } else {
+                    document.forms['contact_form'].elements['email'].style.color = "#FF0000";
+                }
+            }
+            </script>
+            <input type="text" name="email" size="25" maxlength="100" value="<?php echo $email; ?>" style="color : red" /><br />
+            <span style="font-size : smaller"><?php print_string('hiddenaddress', 'block_contact_form') ?></span><br/>
+            <input type="checkbox" name="forcesend" value="1" onclick="validate(this);"> <?php print_string('forcesend', 'block_contact_form') ?>
+<?php
+    }
+}
+?>
+        </td>
+    </tr>
+    <tr> 
+        <td width="30%" valign="top" align="right">
+            <b><?php print_string('subject', 'block_contact_form') ?>: </b>
+        </td>
+        <td width="70%" valign="top" align="left"> 
+            <input type="text" name="subject" style="width : 100%" maxlength="200" <?php if( isset($subject)){ echo 'value="'. $subject .'"';}?> />
+        </td>
+    </tr>
+    <tr> 
+        <td width="30%" valign="top" align="right">
+            <b><?php print_string('comments', 'block_contact_form') ?>:</b>
+        </td>
+        <td width="70%" valign="top" align="left"> 
+            <textarea name="comments" cols="50" rows="8"><?php if( isset($comments)){ echo $comments;}?></textarea>
+        </td>
+    </tr>
+<?php if (!empty($theBlock->config->enablecaptcha)){ ?>
+    <tr> 
+        <td width="30%" valign="top" align="right">
+            <b><?php print_string('captcha', 'block_contact_form') ?>:</b>
+        </td>
+        <td width="70%" valign="top" align="left" valign="middle"> 
+            <?php
+            // set in session for the generator
+            $SESSION->contact_form[$id]->captcha->length = $theBlock->config->captchalength;
+            ?>
+            <img alt="<?php print_string('captchagenerated', 'block_contact_form') ?>" src="<?php echo $CFG->wwwroot.htmlspecialchars('/blocks/contact_form/print_captcha.php?id='.$id);?>" align="middle" />
+            <input type="text" name="captcha" size="<?php echo $theBlock->config->captchalength; ?>" maxlength="<?php echo $theBlock->config->captchalength; ?>" value="" />
+        </td>
+    </tr>
+<?php } ?>
+    <tr> 
+        <td valign="top" align="center" colspan="2"> 
+            <input type="reset" name="go_reset" value="<?php print_string('reset', 'block_contact_form') ?>" />
+            <input type="submit" name="go_submit" value="<?php print_string('submit', 'block_contact_form') ?>" />
+        </td>
+    </tr>
+</table>
+</form>

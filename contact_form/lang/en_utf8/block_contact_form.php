@@ -1,0 +1,54 @@
+<?php // $Id: block_contact_form.php,v 1.1 2009/10/26 15:27:28 vf Exp $ 
+
+$string['additional_cc'] = 'Additional recipient';
+$string['admincopy'] = '(admin copy)';
+$string['allowinstance_cc'] = 'Instance recipient (enabling)';
+$string['askaquestion'] = 'Ask a Question';
+$string['blockname'] = 'Contact form ';
+$string['blocknameforstudents'] = 'Contact form ';
+$string['captcha'] = 'Enter this number in the associated textfield';
+$string['captchaerror'] = 'The captcha could not be verified. This form will not be sent.';
+$string['captchagenerated'] = 'Enter this number in the associated textfield...';
+$string['captchalength'] = 'Captcha length';
+$string['captchalengthdesc'] = 'Number of chars of the captcha. Generally from 3 to 10.';
+$string['ccadditional'] = 'Additional user to be notified with. It MUST have a valid and non stopped email address.';
+$string['ccadmin'] = 'Should the email generated from course pages be sent only to the teachers of that course or to the site administrator as well as the teachers?';
+$string['ccallowinstance'] = 'Let a block instance to add an aditionnal address.';
+$string['ccinstanceadditionaldesc'] = 'Additional user to be notified with (instance scope). It MUST have a valid and non stopped email address.';
+$string['commentreceived'] = 'You have received a comment regarding your ';
+$string['comments'] = 'Comments';
+$string['configcontent'] = 'Content';
+$string['configtitle'] = 'Block Title';
+$string['contactus'] = 'Contact Us';
+$string['continue'] = 'Continue';
+$string['course'] = 'course';
+$string['displayasabutton'] = 'Display as a button';
+$string['displayasalink'] = 'Display as a link';
+$string['displaybutton'] = 'Button';
+$string['displaylink'] = 'Link';
+$string['displaytype'] = 'Display Type';
+$string['displaytypedesc'] = 'How should this block\'s link to the contact form be displayed, as a form button or as a web link?';
+$string['email'] = 'Email';
+$string['emailnone'] = 'Notify only additional recipients.';
+$string['emailteachersandccadmin'] = 'Email teachers and CC admin.';
+$string['enablecaptcha'] = 'Captcha protection';
+$string['enablecaptchadesc'] = 'Enabling Captcha avoids automated robots to spam the contact form.';
+$string['forcesend'] = 'Allow publishing this email address in the message';
+$string['hiddenaddress'] = 'This address is protected by your profile configuration. It won\'t be mentionned in your submission.';
+$string['hiddenemail'] = '[user\'s email is hidden in profile]';
+$string['instance_cc'] = 'Instance Scoped Copy For';
+$string['linktext'] = 'Button or Link Text';
+$string['name'] = 'Name';
+$string['onlyemailadmin'] = 'Notify administrator only.';
+$string['onlyemailteachers'] = 'Notify teachers only.';
+$string['reset'] = 'Reset';
+$string['site'] = 'site';
+$string['subject'] = 'Subject';
+$string['subjectdesc'] = 'What would you like the default subject to be in the form that the user is asked to complete?';
+$string['subjectprefix'] = 'What string should be at the beginning of the subject for all email sent from non-course pages? Entering a value here will make it easier for recipients to filter their email messages.';
+$string['submit'] = 'Send';
+$string['thankyou'] = 'Thank You';
+$string['thankyoumessage'] = 'Thank you for your comment. It has been sent to the correct recipients and will be reviewed as soon as possible.';
+$string['titleandlinkifblank'] = 'If no text is specified then this will be \'Ask a Question\' on course pages or \'Contact Us\' if this block is on the site index page.';
+
+?>

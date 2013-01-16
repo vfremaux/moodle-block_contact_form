@@ -1,0 +1,54 @@
+<?php // $Id: block_contact_form.php,v 1.3 2010/02/08 14:26:19 vf Exp $ 
+
+$string['additional_cc'] = 'Adresse additionnelle';
+$string['admincopy'] = '(Copie admin)';
+$string['allowinstance_cc'] = 'Adresse d\'instance (activation)';
+$string['askaquestion'] = 'Formulaire Contact';
+$string['blockname'] = 'Formulaire Contact';
+$string['blocknameforstudents'] = 'Formulaire Contact';
+$string['captcha'] = 'Recopiez le nombre dans le champ de texte associé ';
+$string['captchaerror'] = 'Le Captcha n\'a pas pu être vérifié. Ce formulaire ne sera pas envoyé.';
+$string['captchagenerated'] = 'Recopier ce nombre dans le champ de texte ci-contre...';
+$string['captchalength'] = 'Longueur du Captcha';
+$string['captchalengthdesc'] = 'Définit le nombre de caractères du Captcha, entre 3 (pratique, peu sécurisé) et 10 (peu pratique, très sécurisé) habituellement.';
+$string['ccadditional'] = 'Utilisateur à notifier supplémentaire. Son adresse de courrier doit être valide et active.';
+$string['ccadmin'] = 'Les avis par courrier dans le contexte d\'un cours doivent t\'ils être envoyés uniquement aux enseignants ou également aux administrateurs du site ?';
+$string['ccallowinstance'] = 'Autoriser une instance du bloc à ajouter une adresse supplémentaire.';
+$string['ccinstanceadditionaldesc'] = 'Utilisateur à notifier supplémentaire (pour l\'instance). Son adresse de courrier doit être valide et active.';
+$string['commentreceived'] = 'Vous avez reçu une question sur ';
+$string['comments'] = 'Commentaires ';
+$string['configcontent'] = 'Contenu';
+$string['configtitle'] = 'Titre du bloc ';
+$string['contactus'] = 'Nous contacter';
+$string['continue'] = 'Continuer';
+$string['course'] = 'Cours';
+$string['displayasabutton'] = 'Montrer comme un bouton';
+$string['displayasalink'] = 'Montrer comme un lien';
+$string['displaytype'] = 'Type d\'affichage ';
+$string['displaybutton'] = 'Bouton';
+$string['displaylink'] = 'Lien';
+$string['displaytypedesc'] = 'Comment la liaison au formulaire qui doit être proposé est rendue, un bouton ou un lien ?';
+$string['email'] = 'Mél ';
+$string['emailnone'] = 'N\'aviser que les adresses additionnelles.';
+$string['emailteachersandccadmin'] = 'Aviser les responsables de l\'espace courant et les administrateurs.';
+$string['enablecaptcha'] = 'Protection par Captcha ';
+$string['enablecaptchadesc'] = 'Le Captcha permet d\'éviter le spam du fomulaire de contact par des robots automatiques.';
+$string['forcesend'] = 'Autoriser la publication de cette adresse dans le message';
+$string['hiddenaddress'] = 'Cette adresse est protégée par configuration de votre profil. Elle ne sera pas émise avec l\'avis';
+$string['hiddenemail'] = '[l\'adresse de l\'émetteur est cachée dans son profil]';
+$string['instance_cc'] = 'Copie supplémentaire pour l\'instance ';
+$string['linktext'] = 'Label de bouton ou d\'hyperlien ';
+$string['name'] = 'Nom ';
+$string['onlyemailadmin'] = 'N\'aviser que l\'administrateur.';
+$string['onlyemailteachers'] = 'N\'aviser que les responsables de l\'espace courant.';
+$string['reset'] = 'Réinitialiser';
+$string['site'] = 'Site';
+$string['subject'] = 'Sujet ';
+$string['subjectdesc'] = 'Le sujet par défaut du formulaire proposé aux utilisateurs.';
+$string['subjectprefix'] = 'Quelle phrase mettre au début du sujet du courrier pour tous les avis envoyés à partir des cours ? Entrer une valeur ici peut faciliter le filtrage automatisé des courriers reçus.';
+$string['submit'] = 'Envoyer';
+$string['thankyou'] = 'Merci';
+$string['thankyoumessage'] = 'Merci pour votre participation. Votre question a été transmise aux personnes concernées qui en prendront connaissance aussitôt que possible.';
+$string['titleandlinkifblank'] = 'Si aucun sujet n\'est donné \'Poser une question\' sur les pages de cours ou \'Nous contacter\' sur la page d\'index.';
+
+?>

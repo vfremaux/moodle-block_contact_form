@@ -1,0 +1,153 @@
+<table cellpadding="9" cellspacing="0">
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('configtitle', 'block_contact_form'); ?>:</b>
+    </td>
+    <td>
+        <?php 
+            $thistitle = '';
+            if (isset($this->config) && isset($this->config->title)) {
+                $thistitle = $this->config->title;
+            }
+            echo '<input type="text" name="title" size="30" value="'. htmlentities($thistitle, ENT_QUOTES, 'UTF-8') .'" />';
+        ?>
+    </td>
+    <td>
+        ( <?php print_string('titleandlinkifblank', 'block_contact_form'); ?> )
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('linktext', 'block_contact_form'); ?>:</b>
+    </td>
+    <td>
+        <?php 
+            $thistext = '';
+            if (isset($this->config) && isset($this->config->linktext)) {
+                $thistext = $this->config->linktext;
+            }
+            echo '<input type="linktext" name="linktext" size="30" value="'. htmlentities($thistext, ENT_QUOTES, 'UTF-8') .'" />';
+        ?>
+    </td>
+    <td>
+        ( <?php print_string('titleandlinkifblank', 'block_contact_form'); ?> )
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('displaytype', 'block_contact_form') ?>:</b>
+    </td>
+    <td>
+        <?php
+            if (isset($this->config) && isset($this->config->displaytype)) {
+                $selected = $this->config->displaytype;
+            } else {
+                if (! isset($CFG->block_contact_form_display_type) ) {
+                        $CFG->block_contact_form_display_type = '0';
+                }
+                $selected = $CFG->block_contact_form_display_type;
+            }
+            $options = array ( '0' => get_string('displayasabutton', 'block_contact_form'),
+                               '1' => get_string('displayasalink', 'block_contact_form') );
+            choose_from_menu ($options, 'displaytype', $selected);
+        ?>
+    </td>
+    <td>
+        <?php print_string('displaytypedesc', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('subject', 'block_contact_form') ?>:</b>
+    </td>
+    <td>
+        <input name="subject" type="text" size="35" value="<?php
+            if (isset($this->config) && isset($this->config->subject) ) {
+                echo htmlentities($this->config->subject, ENT_QUOTES, 'UTF-8') ;
+            }
+        ?>" />
+    </td>
+    <td>
+        <?php print_string('subjectdesc', 'block_contact_form') ?>
+    </td>
+</tr>
+<?php
+if (isset($CFG->block_contact_form_allowinstance_cc) and $CFG->block_contact_form_allowinstance_cc){
+?>
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('instance_cc', 'block_contact_form') ?>:</b>
+    </td>
+    <td>
+        <?php
+        $users = get_users();
+        $usersmenu = array();
+        if ($users){
+            foreach($users as $aUser){
+                $usersmenu[$aUser->id] = fullname($aUser);
+            }
+        }
+        choose_from_menu ($usersmenu, 'instance_cc', @$this->config->instance_cc);
+        helpbutton('instance_cc', get_string('instance_cc', 'block_contact_form'), 'block_contact_form', true, false);
+        ?>
+    </td>
+    <td>
+        <?php print_string('ccinstanceadditionaldesc', 'block_contact_form') ?>
+    </td>
+</tr>
+<?php
+}
+else{
+?>
+    <tr style="visibility : hidden">
+        <td colspan="2">
+            <input type="hidden" name="block_contact_form_instanceadditional_cc" value="" />
+        </td>
+    </tr>
+<?php
+}
+?>
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('enablecaptcha', 'block_contact_form') ?>:</b>
+    </td>
+    <td>
+        <?php
+            $checked = '';
+            if (!empty($this->config->enablecaptcha)) {
+                $checked = 'checked="checked"';
+            }
+        ?>        
+        <input name="enablecaptcha" type="checkbox" value="1" <?php echo $checked ?> />
+    </td>
+    <td>
+        <?php print_string('enablecaptchadesc', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">
+        <b><?php print_string('captchalength', 'block_contact_form') ?>:</b>
+    </td>
+    <td>
+        <?php 
+        if (!isset($this->config->captchalength)){
+            $this->config->captchalength = 3;
+        } elseif ($this->config->captchalength < 3){
+            $this->config->captchalength = 3;
+        } elseif ($this->config->captchalength > 10){
+            $this->config->captchalength = 10;
+        }
+        ?>
+        <input name="captchalength" type="text" size="3" maxlength="3" value="<?php echo $this->config->captchalength ?>" />
+    </td>
+    <td>
+        <?php print_string('captchalengthdesc', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center">
+	<input type="hidden" name="sesskey" value="<?php global $USER; echo $USER->sesskey;?>">
+        <input type="submit" value="<?php print_string('savechanges') ?>" />
+    </td>
+</tr>
+</table>

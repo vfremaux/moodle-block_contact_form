@@ -1,0 +1,27 @@
+Moodle 1.5 compatible Contact Form block by Daryl Hawes
+Révisé pour 1.8 par Valery Fremaux (ethnoinformatique.fr 2007)
+
+basé sur :
+Moodle Web site Contact Form v_5 (by Nicole B. Hansen) (converted to a moodle block by Daryl Hawes)
+Discussion at:
+http://moodle.org/mod/forum/discuss.php?d=12411
+
+
+Ce bloc :
+
+1) affiche un lien ou un bouton vers une page ou un utilisateur (ou un invité) peut soumettre un commentaire.
+2) Peut avoir un comportement différent si le bloc est affiché sur l'index du site ou dans le contexte d'un cours.
+3) A des paramètres globaux.
+4) Inclue des paramètres d'instance.
+5) Permet un notification des administrateurs, des enseignants d'un cours, ou uniquemement d'adresses additionnelles.
+6) Permet de définir une adresse additionnelle pour l'ensemble des formulaires, et une supplémentaire pour chaque formulaire différent. 
+7) peut être configuré par les enseignants du cours (paramètres d'instance)
+8) les formulaires sur les pages d'index sont paramétrables par les administrateurs uniquement.
+ 
+INSTALLATION
+
+1. Copier le répertoire contact_form dans le répertoire de blocs de Moodle.
+2. Visitez la page d'administration pour enregistrer la mise à jour du bloc.
+
+commentaires et débugs : admin@ethnoinformatique.fr ou contacter Valery Fremaux via Moodle.org
+  

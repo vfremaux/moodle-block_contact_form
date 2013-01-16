@@ -1,0 +1,6 @@
+<?php
+define('CONTACT_FORM_NONE', 0);
+define('CONTACT_FORM_ONLY_ADMINS', 1);
+define('CONTACT_FORM_ONLY_TEACHERS', 2);
+define('CONTACT_FORM_ADMINS_TEACHERS', 3);
+?>

@@ -1,0 +1,111 @@
+<?php
+include "{$CFG->dirroot}/blocks/contact_form/locallib.php";
+?>
+
+<form method="post" action="block.php">
+<input name="block" type="hidden" value="<?php echo intval($_REQUEST['block']); ?>" />
+
+<table cellpadding="9" cellspacing="0">
+<tr valign="top">
+    <td align="right">
+        <p>block_contact_form_display_type:</p>
+    </td>
+    <td>
+        <?php if (isset($CFG->block_contact_form_display_type)) {
+                        $selected = $CFG->block_contact_form_display_type;
+                } else {
+                       $selected = '0';
+                }
+                $options = array ( '0' => get_string('displaybutton', 'block_contact_form'),
+                                   '1' => get_string('displaylink', 'block_contact_form') );
+                choose_from_menu ($options, 'block_contact_form_display_type', $selected);
+        ?>
+    </td>
+    <td>
+        <?php print_string('displaytypedesc', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><p>block_contact_form_admin_cc:</td>
+    <td>
+        <?php if (isset($CFG->block_contact_form_admin_cc)) {
+                        $selected = $CFG->block_contact_form_admin_cc;
+                } else {
+                       $selected = '0';
+                }
+                $options2 = array ( CONTACT_FORM_NONE => get_string('emailnone', 'block_contact_form'),
+                                    CONTACT_FORM_ONLY_TEACHERS => get_string('onlyemailteachers', 'block_contact_form'),
+                                    CONTACT_FORM_ONLY_ADMINS => get_string('onlyemailadmin', 'block_contact_form'),
+                                    CONTACT_FORM_ADMINS_TEACHERS => get_string('emailteachersandccadmin', 'block_contact_form')
+                                   );
+
+                choose_from_menu ($options2, 'block_contact_form_admin_cc', $selected);
+        ?>
+    </td>
+    <td>
+        <?php print_string('ccadmin', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><p>block_contact_form_additional_cc:</td>
+    <td>
+        <?php
+        $users = get_users();
+        $usersmenu = array();
+        if ($users){
+            foreach($users as $aUser){
+                $usersmenu[$aUser->id] = fullname($aUser);
+            }
+        }
+        choose_from_menu ($usersmenu, 'block_contact_form_additional_cc', @$CFG->block_contact_form_additional_cc);
+        helpbutton('additional_cc', get_string('additional_cc', 'block_contact_form'), 'block_contact_form', true, false);
+        ?>
+    </td>
+    <td>
+        <?php print_string('ccadditional', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><p>block_contact_form_allowinstance_cc:</td>
+    <td>
+        <?php if (isset($CFG->block_contact_form_allowinstance_cc)) {
+                        $selected = $CFG->block_contact_form_allowinstance_cc;
+                } else {
+                       $selected = '0';
+                }
+                $options2 = array ( '0' => get_string('no') ,
+                                    '1' => get_string('yes') );
+
+                choose_from_menu ($options2, 'block_contact_form_allowinstance_cc', $selected);
+                helpbutton('allowinstance_cc', get_string('allowinstance_cc', 'block_contact_form'), 'block_contact_form', true, false);
+        ?>
+    </td>
+    <td>
+        <?php print_string('ccallowinstance', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right"><p>block_contact_form_subject_prefix:</td>
+    <td>
+       <input name="block_contact_form_subject_prefix" type="text" size="5" value="<?php 
+        if(!isset($CFG->block_contact_form_subject_prefix)) {
+            if ($site = get_site()) {
+                $CFG->block_contact_form_subject_prefix = '['. strip_tags($site->shortname) .']';
+            } else {
+                $CFG->block_contact_form_subject_prefix = '[moodle contact]';
+            }
+        } 
+        p($CFG->block_contact_form_subject_prefix);  ?>" />
+    </td>
+    <td>
+        <?php print_string('subjectprefix', 'block_contact_form') ?>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center">
+        <input type="hidden" name="sesskey" value="<?php global $USER; echo $USER->sesskey;?>">
+        <input type="submit" value="<?php print_string('savechanges') ?>" />
+    </td>
+</tr>
+</table>
+</form>
